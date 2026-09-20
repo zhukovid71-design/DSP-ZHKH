@@ -45,6 +45,7 @@
   .btn-outline:hover { background:var(--primary); color:var(--white); }
   .btn-lg { padding:18px 40px; font-size:18px; }
   .btn-block { width:100%; }
+  .btn:disabled { background:#cbd5e1; color:#f8fafc; cursor:not-allowed; box-shadow:none; transform:none; }
 
   /* Герой */
   .hero { padding:80px 0 60px; background:linear-gradient(135deg,#eff6ff 0%,#f8fafc 100%); }
@@ -131,7 +132,7 @@
 <section class="hero">
   <div class="container hero-inner">
     <div>
-      <div class="hero-badge">⚡ Выезд мастера в течение 2 часов</div>
+      <div class="hero-badge">⚡ Выезд в течение двух часов</div>
       <h1>ЖКХ, клининг и <span>ремонт</span> — быстро и качественно</h1>
       <p>Уборка, сантехника, электрика, мелкий ремонт и аварийные работы. Оставьте заявку онлайн — свяжемся в течение 15 минут.</p>
       <div class="hero-btns">
@@ -228,18 +229,18 @@
           </select>
         </div>
         <div class="form-group">
-          <label for="address">Адрес</label>
+          <label for="address">Адрес *</label>
           <input type="text" id="address" placeholder="Улица, дом, квартира" required>
         </div>
         <div class="form-group">
-          <label for="description">Описание проблемы</label>
+          <label for="description">Описание проблемы *</label>
           <textarea id="description" placeholder="Опишите, что случилось" required></textarea>
         </div>
         <div class="form-group">
-          <label for="phone">Телефон</label>
+          <label for="phone">Телефон *</label>
           <input type="tel" id="phone" placeholder="+7 (___) ___-__-__" required>
         </div>
-        <button type="submit" class="btn btn-primary btn-lg btn-block">📨 Отправить заявку</button>
+        <button type="submit" id="submitBtn" class="btn btn-primary btn-lg btn-block" disabled>📨 Отправить заявку</button>
       </form>
       <div class="form-success" id="formSuccess">
         <div class="icon">✅</div>
@@ -263,12 +264,29 @@
 // Отправка заявки в Nodul webhook
 const WEBHOOK_URL = 'https://webhook.nodul.ru/22675/prod/920038d6-e939-4806-a142-2d9ef2359c38';
 
+const addressInput = document.getElementById('address');
+const descriptionInput = document.getElementById('description');
+const phoneInput = document.getElementById('phone');
+const submitBtn = document.getElementById('submitBtn');
+
+// Кнопка активна только когда заполнены адрес, телефон и описание
+function checkForm() {
+  const address = addressInput.value.trim();
+  const description = descriptionInput.value.trim();
+  const phone = phoneInput.value.trim();
+  submitBtn.disabled = !(address && description && phone);
+}
+
+addressInput.addEventListener('input', checkForm);
+descriptionInput.addEventListener('input', checkForm);
+phoneInput.addEventListener('input', checkForm);
+
 document.getElementById('ticketForm').addEventListener('submit', async function(e) {
   e.preventDefault();
   const category = document.getElementById('category').value;
-  const address = document.getElementById('address').value;
-  const description = document.getElementById('description').value;
-  const phone = document.getElementById('phone').value;
+  const address = addressInput.value.trim();
+  const description = descriptionInput.value.trim();
+  const phone = phoneInput.value.trim();
 
   // Формируем текст сообщения для AI-агента
   const message = `${category}: ${description}. Адрес: ${address}. Телефон: ${phone}`;
