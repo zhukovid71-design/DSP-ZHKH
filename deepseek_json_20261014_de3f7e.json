@@ -1,0 +1,42 @@
+{
+  "name": "Диспетчер ЖКХ — мастер на дом в Абакане",
+  "short_name": "Диспетчер ЖКХ",
+  "description": "Сантехника, электрика, мелкий ремонт и аварийные вызовы в Абакане. Выезд мастера за 2 часа.",
+  "start_url": "/DSP-ZHKH/",
+  "scope": "/DSP-ZHKH/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0f172a",
+  "theme_color": "#1e40af",
+  "lang": "ru",
+  "dir": "ltr",
+  "categories": ["utilities", "business", "lifestyle"],
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%231e40af'/><text x='50' y='68' font-size='50' text-anchor='middle' fill='white'>🛠️</text></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%231e40af'/><text x='50' y='68' font-size='50' text-anchor='middle' fill='white'>🛠️</text></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Оставить заявку",
+      "short_name": "Заявка",
+      "url": "/DSP-ZHKH/#form",
+      "icons": [{ "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📨</text></svg>", "sizes": "96x96" }]
+    },
+    {
+      "name": "Стать мастером",
+      "short_name": "Мастерам",
+      "url": "/DSP-ZHKH/master.html",
+      "icons": [{ "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍🔧</text></svg>", "sizes": "96x96" }]
+    }
+  ]
+}
