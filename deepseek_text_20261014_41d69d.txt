@@ -1,6 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /oferta.html
-Disallow: /privacy.html
-
-Sitemap: https://zhukovid71-design.github.io/DSP-ZHKH/sitemap.xml
